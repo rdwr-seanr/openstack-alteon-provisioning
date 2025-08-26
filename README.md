@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Terraform](https://img.shields.io/badge/Terraform-%3E%3D0.14-blueviolet)](https://www.terraform.io/)
-[![OpenStack](https://img.shields.io/badge/OpenStack-Provider-red)](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest)
+[![OpenStack Provider](https://img.shields.io/badge/OpenStack%20Provider-~%3E%201.53.0-red)](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest)
 
 This Terraform project automates the deployment of a Radware Alteon ADC (Application Delivery Controller) instance on OpenStack with a complete three-tier network architecture including management, data, and server networks.
 
@@ -50,6 +50,7 @@ This Terraform project automates the deployment of a Radware Alteon ADC (Applica
 
 ### Required Tools
 - [Terraform](https://www.terraform.io/downloads.html) >= 0.14
+- [OpenStack Terraform Provider](https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest) ~> 1.53.0
 - [OpenStack CLI](https://docs.openstack.org/python-openstackclient/latest/) (python-openstackclient)
 - Access to an OpenStack cloud environment
 - SSH key pair for instance access
