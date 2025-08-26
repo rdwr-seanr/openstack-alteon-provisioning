@@ -1,0 +1,85 @@
+# OpenStack Terraform Configuration for Alteon ADC Deployment
+# 
+# IMPORTANT: Copy this file to terraform.tfvars and update the values to match your OpenStack environment
+# To check available resources, you need to authenticate first by adding a 
+# password to your clouds.yaml file, then run these commands:
+#
+# Check available images: openstack image list
+# Check available flavors: openstack flavor list  
+# Check external networks: openstack network list --external
+# Check availability zones: openstack availability zone list
+# Check/create key pairs: openstack keypair list
+
+# ===== CRITICAL: UPDATE THESE VALUES FOR YOUR ENVIRONMENT =====
+
+# External network name (REQUIRED - check with: openstack network list --external)
+# Common names: "public", "external", "ext-net", "public-net", "provider-network"
+external_network_name = "public"
+
+# OpenStack availability zone (check with: openstack availability zone list)
+availability_zone = "nova"
+
+# Instance flavor (check with: openstack flavor list)
+# Choose based on Alteon requirements - minimum 4 vCPU, 8GB RAM recommended
+# Common flavors: "m1.large", "standard-4", "4-vcpu", "m1.xlarge"
+instance_flavor = "m1.large"
+
+# Alteon image name (REQUIRED - check with: openstack image list | grep -i alteon)
+# This MUST match an existing Alteon image in your OpenStack environment
+# Example names: "alteon-va", "AlteonOSU18-34.5.3.1", "radware-alteon"
+alteon_image_name = "alteon-va"
+
+# SSH Key pair name (REQUIRED - check with: openstack keypair list)
+# Create one if needed: openstack keypair create --public-key ~/.ssh/id_rsa.pub my-keypair
+key_pair_name = "my-keypair"
+
+# ===== OPTIONAL: CUSTOMIZE THESE VALUES =====
+
+# Unique identifier for this deployment (allows multiple deployments)
+deployment_id = "demo"
+
+# Network configuration - adjust CIDR blocks if they conflict with your network
+subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+
+# IP addresses for ADC interfaces (must be within the respective subnet ranges)
+# Note: Avoid x.x.x.1 (usually gateway) and check allocation pools
+adc_mgmt_private_ip = "10.0.1.10"       # Management interface IP
+adc_clients_private_ip = "10.0.2.10"    # Data/Client interface IP
+adc_servers_private_ip = "10.0.3.10"    # Servers interface IP
+adc_servers_private_ip_pip = "10.0.3.11" # Proxy IP for server side
+
+# Admin credentials for Alteon ADC
+admin_user = "admin"
+admin_password = "yourSecurePassword123"
+
+# VM naming
+vm_name = "alteon-openstack-vm"
+
+# ===== GEL (Global Elastic Load Balancer) Configuration =====
+gel_enabled = false
+gel_url_primary = "http://primary.gel.example.com"
+gel_url_secondary = "http://secondary.gel.example.com"
+gel_ent_id = "12345"
+gel_throughput_mb = "100"
+gel_dns_pri = "8.8.8.8"
+
+# ===== NTP Configuration =====
+ntp_primary_server = "pool.ntp.org"
+ntp_tzone = "UTC"
+
+# ===== Cloud Connector Configuration =====
+cc_local_ip = "10.0.1.10"
+cc_remote_ip = "0.0.0.0"
+
+# ===== Syslog Configuration =====
+hst1_ip = "192.168.1.100"  # Your syslog server IP
+hst1_severity = "7"
+hst1_facility = "0"
+hst1_module = "all"
+hst1_port = "514"
+
+hst2_ip = "0.0.0.0"       # Secondary syslog (disabled by default)
+hst2_severity = "7"
+hst2_facility = "0"
+hst2_module = "all"
+hst2_port = "514"

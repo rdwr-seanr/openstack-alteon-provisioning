@@ -1,0 +1,65 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform.tfvars.example
+.terraform/
+.terraform.lock.hcl
+terraform.tfplan
+terraform.tfplan.*
+crash.log
+crash.*.log
+
+# SSH Keys
+*.pem
+*.ppk
+*.key
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Log files
+*.log
+
+# Cloud configuration files (contains credentials)
+clouds.yaml
+.clouds.yaml
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Custom user configurations
+local.tfvars
+*.auto.tfvars
