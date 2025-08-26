@@ -124,8 +124,8 @@ openstack network list
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/openstack-terraform-alteon.git
-cd openstack-terraform-alteon
+git clone https://github.com/YOUR_USERNAME/openstack-alteon-provisioning.git
+cd openstack-alteon-provisioning
 ```
 
 ### 2. Configure Variables
@@ -216,7 +216,6 @@ deployment_message        = "Access instructions..."
 ### Web Management Interface
 
 - **Primary URL:** `https://<public-ip>`
-- **Alternative URL:** `https://<public-ip>:8443`
 - **Default Credentials:** 
   - Username: `admin`
   - Password: As configured in `admin_password` variable
